@@ -32,6 +32,10 @@ Generating the transition function and graph from k is easy, but how to convert 
 
 [FSM2Regex](http://ivanzuzak.info/noam/webapps/fsm2regex/)
 
+[Regex Simplifier](http://ivanzuzak.info/noam/webapps/regex_simplifier/)
+
+[Noam - Automata and Language library in JS](https://github.com/izuzak/noam)
+
 ### Video Lectures
 
 [Theory of Computation - Harry Porter](https://www.youtube.com/playlist?list=PLbtzT1TYeoMjNOGEiaRmm_vMIwUAidnQz)
