@@ -7,8 +7,10 @@ Generate regular expressions that accept binary strings divisible by k. For exam
 Output:
 
 ```
-(a+bb*a)*
+(0+11*0)*
 ```
+
+Generating the transition function and graph from k is easy, but how to convert our DFA to a RE? With an algorithm!
 
 ## Links
 
