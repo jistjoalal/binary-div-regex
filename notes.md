@@ -1,0 +1,46 @@
+## Goal
+
+Generate regular expressions that accept binary strings divisible by k. For example, for k = 2:
+
+![DFA k=2](https://i.imgur.com/5r8RljY.jpg)
+
+Output:
+
+```
+(a+bb*a)*
+```
+
+## Links
+
+### Division
+
+[Divisibility Machines and Regular Expressions](http://www.exstrom.com/blog/abrazolica/posts/divautomata.html)
+
+[DFA based division](https://www.geeksforgeeks.org/dfa-based-division/)
+
+### Conversion
+
+[DFA to Regular Expression](https://www.gatevidyalay.com/dfa-to-regular-expression-examples-automata/)
+
+[Algo for converting FSM to RE](https://qntm.org/algo)
+
+[How to convert finite automata to regular expressions](https://cs.stackexchange.com/questions/2016/how-to-convert-finite-automata-to-regular-expressions)
+
+[Kleene's Algorithm](https://en.wikipedia.org/wiki/Kleene's_algorithm#Example)
+
+[FSM2Regex](http://ivanzuzak.info/noam/webapps/fsm2regex/)
+
+### Misc.
+
+[4.4.2 - REs and FSMs](http://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation.pdf)
+
+[And in RE](https://www.ocpsoft.org/tutorials/regular-expressions/and-in-regex/)
+
+[Graphviz - Graph Visualization](https://graphviz.org/)
+
+## ideas
+
+- combine lower factor REs w/ "And" operation
+  - e.g. `RE(2) && RE(5) = RE(10)`
+  - wouldn't work w/ powers of the same RE?
+    - e.g. `RE(2) && RE(2) != RE(4)`?
