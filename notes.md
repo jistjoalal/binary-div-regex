@@ -32,6 +32,12 @@ Generating the transition function and graph from k is easy, but how to convert 
 
 [FSM2Regex](http://ivanzuzak.info/noam/webapps/fsm2regex/)
 
+### Video Lectures
+
+[Theory of Computation - Harry Porter](https://www.youtube.com/playlist?list=PLbtzT1TYeoMjNOGEiaRmm_vMIwUAidnQz)
+
+[DFA to RegEx - Neso Academy](https://www.youtube.com/watch?v=SmT1DXLl3f4)
+
 ### Misc.
 
 [4.4.2 - REs and FSMs](http://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation.pdf)
