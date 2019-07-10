@@ -16,6 +16,13 @@ Generating the transition function and graph from k is easy, but how to convert 
 
 ### Division
 
+The idea is to generate a DFA for divisibility by k with the following formula:
+
+```
+              0           1
+state (q_i):  2q_i mod k  (2q_i + 1) mod k
+```
+
 [Divisibility Machines and Regular Expressions](http://www.exstrom.com/blog/abrazolica/posts/divautomata.html)
 
 [DFA based division](https://www.geeksforgeeks.org/dfa-based-division/)
@@ -35,6 +42,8 @@ Generating the transition function and graph from k is easy, but how to convert 
 [Regex Simplifier](http://ivanzuzak.info/noam/webapps/regex_simplifier/)
 
 [Noam - Automata and Language library in JS](https://github.com/izuzak/noam)
+
+[State Removal Method](https://cs.stackexchange.com/questions/2016/how-to-convert-finite-automata-to-regular-expressions/2389#2389)
 
 ### Video Lectures
 
