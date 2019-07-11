@@ -10,7 +10,16 @@ Output:
 (0+11*0)*
 ```
 
-Generating the transition function and graph from k is easy, but how to convert our DFA to a RE? With an algorithm!
+### Current Attempt
+
+- We generate a DFA capable of recognizing the language of binary strings divisible by k.
+- We convert DFA to GNFA (Generalized NFA) where edges are labelled with REs instead of individual symbols
+- We use the state removal method on the GNFA, redefining every other edge in the graph at each removal. This maintains equivalent language recognition
+- Repeat until only 2 states left
+- The 1 remaining edge is our horrendously long RE
+- Currently capable of generating REs up to k = 14.
+- `generateRe(15)` throws a "RegEx too big" error xD
+- There will be more learning!
 
 ## Links
 
