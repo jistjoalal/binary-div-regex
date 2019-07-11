@@ -1,13 +1,19 @@
-// helpers //
+const { rng } = require("./helpers");
 
-// Returns array from 0 to n-1
-function rng(n) {
-  return [...Array(n).keys()];
-}
+// DFA construction + evaluation
 
-// returns binary string of n
-function bin(n) {
-  return n.toString(2);
+class DFA {
+  constructor(states, alphabet, trans, start, final) {
+    this.states = states;
+    this.alphabet = alphabet;
+    this.start = start;
+    this.final = final;
+    this.dfa = generateDFA(states, alphabet, trans);
+  }
+
+  evaluate(string) {
+    return evaluate(string, this.dfa, this.start, this.final);
+  }
 }
 
 // Draws and returns DFA from Q, Σ, and δ
@@ -38,39 +44,8 @@ function evaluate(string, dfa, start, final) {
   return state === final;
 }
 
-// binary divisibility //
-
-/**
- * Binary Divisibility DFA
- * - Generate DFA that recognizes the language of binary strings
- *   divisible by some k
- */
-function binaryDivDFA(k) {
-  const states = rng(k);
-  const alphabet = [0, 1];
-  const trans = divTrans(k);
-
-  return generateDFA(states, alphabet, trans);
-}
-
-/**
- * Transition function for binary divisibility by k
- * - returns transition _function_
- * - expects symbol to be from {0, 1}
- */
-function divTrans(k) {
-  return function(state, symbol) {
-    // reading 0 multiplies by 2 (left shift)
-    // reading 1 multiplies by 2 and adds 1
-    return (2 * state + symbol) % k;
-    // for more complex transition functions,
-    // we could return -1 if symbol not in alphabet
-  };
-}
-
 module.exports = {
-  bin,
-  binaryDivDFA,
-  divTrans,
+  DFA,
+  generateDFA,
   evaluate
 };
