@@ -1,5 +1,3 @@
-const { rng } = require("./helpers");
-
 // DFA construction + evaluation
 
 class DFA {
@@ -19,10 +17,11 @@ class DFA {
 // Draws and returns DFA from Q, Σ, and δ
 function generateDFA(states, alphabet, trans) {
   // Initialize DFA as 2d array (Q x Σ)
-  let dfa = rng(states.length).map(row => rng(alphabet.length));
+  let dfa = {};
 
   // Draw graph
   for (let curState of states) {
+    dfa[curState] = {};
     for (let symbol of alphabet) {
       dfa[curState][symbol] = trans(curState, symbol);
 

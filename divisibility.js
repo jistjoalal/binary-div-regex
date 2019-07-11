@@ -1,5 +1,6 @@
 const { rng } = require("./helpers");
 const { DFA } = require("./dfa-generate");
+const { dfaToRE } = require("./dfaToRE");
 
 // binary divisibility //
 
@@ -33,10 +34,15 @@ function divTrans(k) {
   };
 }
 
-// const dfa = new DFA(rng(3), [0, 1], divTrans(3), 0, 0);
-// console.log(dfa.evaluate("1001"));
+function generateRE(k) {
+  if (k === 0) return "^0$";
+  if (k === 1) return "^[01]+$";
+  const dfa = binaryDivDFA(k);
+  return dfaToRE(dfa);
+}
 
 module.exports = {
   binaryDivDFA,
-  divTrans
+  divTrans,
+  generateRE
 };

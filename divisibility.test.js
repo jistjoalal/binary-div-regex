@@ -1,7 +1,7 @@
 const assert = require("assert");
 
-const { bin } = require("./helpers");
-const { binaryDivDFA, divTrans } = require("./divisibility");
+const { bin, randInt } = require("./helpers");
+const { binaryDivDFA, divTrans, generateRE } = require("./divisibility");
 
 // binaryDivDFA //
 
@@ -31,3 +31,35 @@ const div34by17 = dfa17.evaluate(bin(34));
 assert.equal(div34by17, true);
 const div35by17 = dfa17.evaluate(bin(35));
 assert.equal(div35by17, false);
+
+// generateRE //
+
+function testGenerateREForK(k) {
+  console.time("generateRE");
+  const reString = generateRE(k);
+  const re = new RegExp(reString);
+  // console.log(re);
+  console.timeEnd("generateRE");
+
+  console.time(`test k = ${k}`);
+  const numTests = 10;
+  const randRange = 100;
+  for (let i = 0; i < numTests; i++) {
+    const n = randInt(randRange);
+    const res = re.test(bin(n));
+    const exp = n % k == 0;
+    if (res !== exp) {
+      console.log(n, res, exp);
+    }
+    assert.equal(res, exp);
+  }
+  console.timeEnd(`test k = ${k}`);
+}
+
+// state removal method gets us up to k = 14
+// k = 15 throws RegEx too big error xD
+// k > 10 takes seconds to compile the RE
+const testKTo = 10;
+for (let k = 1; k <= testKTo; k++) {
+  testGenerateREForK(k);
+}

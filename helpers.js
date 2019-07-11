@@ -10,7 +10,13 @@ function bin(n) {
   return n.toString(2);
 }
 
+// returns random int b/w 0 and u
+function randInt(u) {
+  return Math.floor(Math.random() * u);
+}
+
 module.exports = {
   rng,
-  bin
+  bin,
+  randInt
 };
