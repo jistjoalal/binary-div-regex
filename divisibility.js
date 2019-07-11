@@ -13,7 +13,7 @@ function binaryDivDFA(k) {
   const alphabet = [0, 1];
   const trans = divTrans(k);
 
-  return new DFA(states, alphabet, trans, 0, 0);
+  return new DFA(states, alphabet, trans, 0, [0]);
 }
 
 /**

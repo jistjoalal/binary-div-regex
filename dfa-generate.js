@@ -3,16 +3,16 @@ const { rng } = require("./helpers");
 // DFA construction + evaluation
 
 class DFA {
-  constructor(states, alphabet, trans, start, final) {
+  constructor(states, alphabet, trans, start, finals) {
     this.states = states;
     this.alphabet = alphabet;
     this.start = start;
-    this.final = final;
+    this.finals = finals;
     this.dfa = generateDFA(states, alphabet, trans);
   }
 
   evaluate(string) {
-    return evaluate(string, this.dfa, this.start, this.final);
+    return evaluate(string, this.dfa, this.start, this.finals);
   }
 }
 
@@ -34,14 +34,12 @@ function generateDFA(states, alphabet, trans) {
 }
 
 // evaluates string through dfa
-function evaluate(string, dfa, start, final) {
+function evaluate(string, dfa, start, finals) {
   let state = start;
   for (let symbol of string) {
     state = dfa[state][symbol];
   }
-  // to handle multiple final states, we could pass "finals" array
-  // and check accept/reject with "finals.include(state)"
-  return state === final;
+  return finals.includes(state);
 }
 
 module.exports = {
