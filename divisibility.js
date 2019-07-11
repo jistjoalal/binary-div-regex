@@ -12,8 +12,10 @@ function binaryDivDFA(k) {
   const states = rng(k);
   const alphabet = [0, 1];
   const trans = divTrans(k);
+  const start = 0;
+  const finals = [0];
 
-  return new DFA(states, alphabet, trans, 0, [0]);
+  return new DFA(states, alphabet, trans, start, finals);
 }
 
 /**
