@@ -1,4 +1,4 @@
-const { rng, bin } = require("./helpers");
+const { rng } = require("./helpers");
 const { DFA } = require("./dfa-generate");
 const { dfaToRE } = require("./dfaToRE");
 
@@ -38,9 +38,10 @@ function generateRE(k) {
   if (k === 0) return "^0$";
   if (k === 1) return "^[01]+$";
   const dfa = binaryDivDFA(k);
-  const re = dfaToRE(dfa);
+  let re = dfaToRE(dfa);
   // avoid empty matches
-  return `^(${re})+$`;
+  re = `^(${re})+$`;
+  return re;
 }
 
 module.exports = {

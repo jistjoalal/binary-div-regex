@@ -38,15 +38,16 @@ describe("DFA.evaluate", () => {
   });
 });
 
-describe("generateRE", () => {
-  it("generates valid REs", () => {
-    // k = 16 throws RegEx too big error
-    // k > 13 takes >1 sec to compile the RE
-    const testKTo = 10;
-    for (let k = 1; k <= testKTo; k++) {
+describe("generateRE", function() {
+  this.timeout(5000);
+  // k = 17 throws RegEx too big error
+  // k > 15 takes >1 sec to compile the RE
+  const testKTo = 15;
+  for (let k = 1; k <= testKTo; k++) {
+    it(`generates RE for k = ${k}`, () => {
       testGenerateREForK(k);
-    }
-  });
+    });
+  }
 });
 
 describe("factor combination", () => {
@@ -64,17 +65,23 @@ describe("factor combination", () => {
 // test helpers
 
 function testGenerateREForK(k) {
+  // console.time("generate RE");
   const reString = generateRE(k);
   const re = new RegExp(reString);
+  // console.timeEnd("generate RE");
+
   testREForK(re, k);
 }
 
 function testREForK(re, k) {
-  const numTests = 10;
-  const randRange = 10e10;
+  const numTests = 30;
+  const randRange = 10e8;
   for (let i = 0; i < numTests; i++) {
     const n = randInt(randRange);
+
+    // console.time(`testing n = ${n}`);
     testREForKn(re, k, n);
+    // console.timeEnd(`testing n = ${n}`);
   }
 }
 
