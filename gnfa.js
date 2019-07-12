@@ -70,6 +70,8 @@ function removeStateFromGNFA(remove, gnfa) {
 
       const re = replacementRE(R_ij, R_ix, R_xx, R_xj);
       newGNFA[from][to] = re;
+
+      // console.log(from, to, re);
     }
   }
   return newGNFA;
@@ -98,6 +100,8 @@ function replacementRE(R_ij, R_ix, R_xx, R_xj) {
   RHS = RHS.replace(/ε/g, "");
   // remove single parenthesis (x) = x
   RHS = RHS.replace(/\((.?)\)/g, "$1");
+  // replace some unnecessary parens
+  RHS = RHS.replace(/\(([^\(|\)]*)\)(?!\*)/g, "$1");
 
   // join with union if both sides exist
   // replace w/ empty set if empty

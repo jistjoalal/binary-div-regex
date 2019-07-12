@@ -52,8 +52,6 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
 
 [Noam - Automata and Language library in JS](https://github.com/izuzak/noam)
 
-[State Removal Method](https://cs.stackexchange.com/questions/2016/how-to-convert-finite-automata-to-regular-expressions/2389#2389)
-
 ### Video Lectures
 
 [Theory of Computation - Harry Porter](https://www.youtube.com/playlist?list=PLbtzT1TYeoMjNOGEiaRmm_vMIwUAidnQz)
@@ -68,9 +66,13 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
 
 [Graphviz - Graph Visualization](https://graphviz.org/)
 
-## ideas
+## todos + ideas
 
+- more parenthesis simplification
 - combine lower factor REs w/ "And" operation
   - e.g. `RE(2) && RE(5) = RE(10)`
   - wouldn't work w/ powers of the same RE?
     - e.g. `RE(2) && RE(2) != RE(4)`?
+- add test driver to project
+- refactor generateRE tests
+- refactor out a general solution once up to k=18
