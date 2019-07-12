@@ -1,7 +1,7 @@
 const assert = require("assert");
 
-const { bin, randInt } = require("../helpers");
-const { binaryDivDFA, divTrans, generateRE } = require("../divisibility");
+const { bin, randInt } = require("../src/helpers");
+const { binaryDivDFA, divTrans, generateRE } = require("../src/divisibility");
 
 describe("binaryDivDFA", () => {
   it("generates DFA for k = 5", () => {
