@@ -17,9 +17,15 @@ Output:
 - We use the state removal method on the GNFA, redefining every other edge in the graph at each removal. This maintains equivalent language recognition
 - Repeat until only 2 states left
 - The 1 remaining edge is our horrendously long RE
-- Currently capable of generating REs up to k = 14.
-- `generateRe(15)` throws a "RegEx too big" error xD
-- There will be more learning!
+- Next steps are simplifying parenthesis and combining REs of factors of larger k's to minimize expression length
+
+## Tests
+
+Check out the tests for an overview of what the primary functions do. We test higher level functions related to our divisibility problem in an integration test style. The generalized FSM functions and classes are tested only implicitly.
+
+```sh
+npm test
+```
 
 ## Links
 
@@ -73,6 +79,4 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
   - e.g. `RE(2) && RE(5) = RE(10)`
   - wouldn't work w/ powers of the same RE?
     - e.g. `RE(2) && RE(2) != RE(4)`?
-- add test driver to project
-- refactor generateRE tests
 - refactor out a general solution once up to k=18

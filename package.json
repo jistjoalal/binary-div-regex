@@ -1,0 +1,23 @@
+{
+  "name": "binary-div-regex",
+  "version": "1.0.0",
+  "description": "Generate regular expressions that accept binary strings divisible by k. For example, for k = 2:",
+  "main": "dfa-generate.js",
+  "scripts": {
+    "test": "nodemon --exec mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jistjoalal/binary-div-regex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jistjoalal/binary-div-regex/issues"
+  },
+  "homepage": "https://github.com/jistjoalal/binary-div-regex#readme",
+  "devDependencies": {
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
+}
