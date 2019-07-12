@@ -35,15 +35,16 @@ assert.equal(div35by17, false);
 // generateRE //
 
 function testGenerateREForK(k) {
-  console.time("generateRE");
+  console.log("\nk = " + k);
+  console.time("generate RE");
   const reString = generateRE(k);
   const re = new RegExp(reString);
   // console.log(re);
-  console.timeEnd("generateRE");
+  console.timeEnd("generate RE");
 
-  console.time(`test k = ${k}`);
+  console.time("execute RE");
   const numTests = 10;
-  const randRange = 100;
+  const randRange = 10e10;
   for (let i = 0; i < numTests; i++) {
     const n = randInt(randRange);
     const res = re.test(bin(n));
@@ -53,7 +54,7 @@ function testGenerateREForK(k) {
     }
     assert.equal(res, exp);
   }
-  console.timeEnd(`test k = ${k}`);
+  console.timeEnd("execute RE");
 }
 
 // state removal method gets us up to k = 14
