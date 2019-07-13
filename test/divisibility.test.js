@@ -23,18 +23,14 @@ describe("divTrans", () => {
 describe("DFA.evaluate", () => {
   it("recognizes binary divisibility by 3", () => {
     const dfa3 = binaryDivDFA(3);
-    const div9by3 = dfa3.evaluate(bin(9));
-    assert.equal(div9by3, true);
-    const div10by3 = dfa3.evaluate(bin(10));
-    assert.equal(div10by3, false);
+    assert.equal(dfa3.evaluate(bin(9)), true);
+    assert.equal(dfa3.evaluate(bin(10)), false);
   });
 
-  it("recognizes binary divisibility by 7", () => {
+  it("recognizes binary divisibility by 17", () => {
     const dfa17 = binaryDivDFA(17);
-    const div34by17 = dfa17.evaluate(bin(34));
-    assert.equal(div34by17, true);
-    const div35by17 = dfa17.evaluate(bin(35));
-    assert.equal(div35by17, false);
+    assert.equal(dfa17.evaluate(bin(34)), true);
+    assert.equal(dfa17.evaluate(bin(35)), false);
   });
 });
 

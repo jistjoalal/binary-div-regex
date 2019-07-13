@@ -17,7 +17,8 @@ Output:
 - We use the state removal method on the GNFA, redefining every other edge in the graph at each removal. This maintains equivalent language recognition
 - Repeat until only 2 states left
 - The 1 remaining edge is our horrendously long RE
-- Next steps are simplifying parenthesis and combining REs of factors of larger k's to minimize expression length
+- We do some basic RE simplification to minimize RE compilation time
+- We reach some higher order k's by combining REs of lower order k's that do not share a common divisor
 
 ## Getting Started w/ Tests
 
