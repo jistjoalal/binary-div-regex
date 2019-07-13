@@ -41,28 +41,34 @@ describe("DFA.evaluate", () => {
 describe("generateRE", function() {
   this.timeout(5000);
   // k = 17 throws RegEx too big error
-  // k > 15 takes >1 sec to compile the RE
-  const testKTo = 15;
+  // k > 14 takes >1 sec to compile the RE
+  const testKTo = 14;
   for (let k = 1; k <= testKTo; k++) {
-    it(`generates RE for k = ${k}`, () => {
+    it(`k = ${k}`, () => {
       testGenerateREForK(k);
     });
   }
 });
 
 describe("factor combination", () => {
-  it("combines R2 and R3 to build R6", () => {
-    // factor combination
-    const k = 6;
-    const re2 = generateRE(2);
-    const re3 = generateRE(3);
-    const re = new RegExp(`(?=${re2})${re3}`);
-
-    testREForK(re, k);
-  });
+  testFactorCombo(2, 3);
+  testFactorCombo(2, 5);
+  testFactorCombo(2, 7);
+  testFactorCombo(2, 9);
+  testFactorCombo(3, 4);
+  testFactorCombo(3, 5);
 });
 
 // test helpers
+
+function testFactorCombo(a, b) {
+  it(`combines R${a} and R${b} to build R${a * b}`, () => {
+    const re2 = generateRE(a);
+    const re3 = generateRE(b);
+    const re = new RegExp(`(?=${re2})${re3}`);
+    testREForK(re, a * b);
+  });
+}
 
 function testGenerateREForK(k) {
   // console.time("generate RE");
@@ -80,12 +86,12 @@ function testREForK(re, k) {
     const n = randInt(randRange);
 
     // console.time(`testing n = ${n}`);
-    testREForKn(re, k, n);
+    testREForKbyN(re, k, n);
     // console.timeEnd(`testing n = ${n}`);
   }
 }
 
-function testREForKn(re, k, n) {
+function testREForKbyN(re, k, n) {
   const res = re.test(bin(n));
   const exp = n % k == 0;
   assert.equal(res, exp, assertMsg(k, n, res, exp));
