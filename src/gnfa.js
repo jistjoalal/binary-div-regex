@@ -8,7 +8,7 @@ class GNFA {
     // remove from end in decreasing order
     // this speeds up by factor of ~8
     const remove = this.states.slice(-1)[0];
-    this.gnfa = removeStateFromGNFA(remove, this.gnfa);
+    this.gnfa = removeStateFromGNFA(remove, this.gnfa, this.states);
     this.states = this.states.slice(0, -1);
   }
 }
@@ -49,8 +49,7 @@ function dfaToGNFA(dfa) {
 
 // Removes one state from GNFA, replacing all remaining edges
 // w/ RE that maintains equivalent language recognition
-function removeStateFromGNFA(remove, gnfa) {
-  const states = Object.keys(gnfa);
+function removeStateFromGNFA(remove, gnfa, states) {
   if (states.length <= 2) return gnfa;
 
   // remove = q_x

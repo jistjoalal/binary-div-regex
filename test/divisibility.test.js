@@ -100,3 +100,5 @@ function testREForKbyN(re, k, n) {
 function assertMsg(k, n, res, exp) {
   return `k = ${k}, n = ${n}, res = ${res}, exp = ${exp}`;
 }
+
+module.exports = { testREForK };

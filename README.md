@@ -109,10 +109,7 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
 
 ## todos + ideas
 
-- refactor simplifyParens
-- refactor out a more concise solution
-  - skip dfa step
-  - probably some loops to combine
+- keep simplifying solution
 
 ## Call Chain
 
