@@ -19,6 +19,7 @@ Output:
 - The 1 remaining edge is our horrendously long RE
 - We do some basic RE simplification to minimize RE compilation time
 - We reach some higher order k's by combining REs of lower order k's that do not share a common divisor
+- Order of state removal and parenthesis simplification are the most important factors for performance
 
 ## Getting Started w/ Tests
 
@@ -108,13 +109,5 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
 
 ## todos + ideas
 
-- cant think of how to simplify RE any more
-  - try to minimize DFA before conversion?
-  - order of state removal?
-- combine lower factor REs w/ "And" operation
-  - e.g. `RE(2) && RE(5) = RE(10)`
-  - wouldn't work w/ powers of the same RE
-    - e.g. `RE(2) && RE(2) != RE(4)`
-  - also doesn't work if a is factor of b:
-    - e.g. `RE(2) && RE(4) != RE(8)`
-- refactor out a more concise solution once we get k=17
+- refactor simplifyParens
+- refactor out a more concise solution

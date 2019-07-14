@@ -2,13 +2,14 @@
 // DFA to RE
 class GNFA {
   constructor(dfa) {
-    this.gnfa = dfaToGNFA(dfa);
-    this.states = Object.keys(this.gnfa);
+    [this.gnfa, this.states] = dfaToGNFA(dfa);
   }
   removeState() {
-    const remove = this.states[0];
+    // remove from end in decreasing order
+    // this speeds up by factor of ~8
+    const remove = this.states.slice(-1)[0];
     this.gnfa = removeStateFromGNFA(remove, this.gnfa);
-    this.states = this.states.slice(1);
+    this.states = this.states.slice(0, -1);
   }
 }
 
@@ -34,7 +35,7 @@ function dfaToGNFA(dfa) {
   }
 
   // add missing edges w/ "{}"
-  const states = [...dfa.states, "start", "final"];
+  const states = ["start", "final", ...dfa.states];
   for (let from of states) {
     for (let to of states) {
       if (!gnfa[from] || !gnfa[from][to]) {
@@ -43,7 +44,7 @@ function dfaToGNFA(dfa) {
     }
   }
 
-  return gnfa;
+  return [gnfa, states];
 }
 
 // Removes one state from GNFA, replacing all remaining edges

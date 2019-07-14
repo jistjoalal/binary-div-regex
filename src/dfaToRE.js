@@ -11,8 +11,6 @@ function dfaToRE(dfa) {
 }
 
 // removes unnecessary parenthesis
-// TODO: how to handle paren pairs that should be removed
-//   that only have '|' in children. These still make it thru.
 function simplifyParens(re) {
   let stack = [];
   let toRemove = [];

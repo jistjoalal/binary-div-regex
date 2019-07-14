@@ -36,9 +36,7 @@ describe("DFA.evaluate", () => {
 
 describe("generateRE", function() {
   this.timeout(5000);
-  // k = 17 throws RegEx too big error
-  // k > 14 takes >1 sec to compile the RE
-  const testKTo = 14;
+  const testKTo = 18;
   for (let k = 1; k <= testKTo; k++) {
     it(`k = ${k}`, () => {
       testGenerateREForK(k);
