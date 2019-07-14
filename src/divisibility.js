@@ -40,7 +40,7 @@ function generateRE(k) {
   const dfa = binaryDivDFA(k);
   let re = dfaToRE(dfa);
   // avoid empty matches
-  re = `^(${re})+$`;
+  re = `^${re.slice(0, -1)}+$`;
   return re;
 }
 

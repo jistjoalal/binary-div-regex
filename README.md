@@ -111,3 +111,18 @@ state (q_i):  2q_i mod k  (2q_i + 1) mod k
 
 - refactor simplifyParens
 - refactor out a more concise solution
+  - skip dfa step
+  - probably some loops to combine
+
+## Call Chain
+
+```d
+generateRE(k)                                           // returns RE string for binary divisibility
+    binaryDivDFA(k)                                     // returns DFA object for binary divisibility
+        divTrans(k)                                     // returns transition function for k
+        new DFA(states, alphabet, trans, start, finals) // returns DFA object
+    dfaToRE(dfa)                                        // returns RE
+        new GNFA(dfa)                                   // returns GNFA object
+        gnfa.removeState()                              // pops a state out of the gnfa
+        simplifyParens(re)                              // returns simplified RE
+```
