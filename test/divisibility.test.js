@@ -45,12 +45,18 @@ describe("generateRE", function() {
 });
 
 describe("factor combination", () => {
-  testFactorCombo(2, 3);
-  testFactorCombo(2, 5);
-  testFactorCombo(2, 7);
-  testFactorCombo(2, 9);
-  testFactorCombo(3, 4);
-  testFactorCombo(3, 5);
+  const m = 5;
+  for (let i = 2; i <= m; i++) {
+    for (let j = i + 1; j <= m; j++) {
+      if (j % i !== 0) {
+        let test = true;
+        for (let k = 2; k <= m; k++) {
+          if (j % k === 0 && i % k === 0) test = false;
+        }
+        if (test) testFactorCombo(i, j);
+      }
+    }
+  }
 });
 
 // test helpers
